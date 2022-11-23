@@ -42,23 +42,40 @@ def embeddings(text, tokenizer, model, cache):
         cache[text] = embeddings
         return embeddings
 
-def for_idx(idx, inputs, model, tokenizer, embeddings_cache):
-    original = tokenizer.decode(inputs['input_ids'][0][idx])
-    original_embeddings = embeddings(original, tokenizer, model, embeddings_cache)
-
-    inputs.input_ids[torch.tensor(0), torch.tensor(idx)] = tokenizer.mask_token_id
+def for_idx(idxs, inputs, model, tokenizer, embeddings_cache):
+    originals = []
+    originals_embeddings = []
+    for idx in idxs:
+        original = tokenizer.decode(inputs['input_ids'][0][idx])
+        originals.append(original)
+        original_embeddings = embeddings(original, tokenizer, model, embeddings_cache)
+        originals_embeddings.append(original_embeddings)
+        
+    for idx in idxs:
+        inputs.input_ids[torch.tensor(0), torch.tensor(idx)] = tokenizer.mask_token_id
     encoder_output = model(**inputs)
     mask_token_index = torch.where(inputs["input_ids"] == tokenizer.mask_token_id)[1]
     
     mask_token_logits = encoder_output.logits[0, mask_token_index, :]
-    predicted = tokenizer.decode(torch.topk(mask_token_logits, 1, dim=1).indices[0].tolist())
-    predicted_embeddings = embeddings(predicted, tokenizer, model, embeddings_cache)
-    
-    similarity = cosine_similarity(original_embeddings.detach().numpy(), predicted_embeddings.detach().numpy())
-    return {
-        'original': original, 
-        'predicted': predicted, 
-        'cosine_similarity': similarity}
+    preds = []
+    preds_embeddings = []
+    tops = torch.topk(mask_token_logits, 1, dim=1)
+    for i in range(len(idxs)):
+        pred = tokenizer.decode(tops.indices[i].tolist()) 
+        emb  = embeddings(pred, tokenizer, model, embeddings_cache)
+        preds.append(pred)
+        preds_embeddings.append(emb)
+        
+    out = []
+    for i in range(len(idxs)):
+        similarity = cosine_similarity(originals_embeddings[i].detach().numpy(), preds_embeddings[i].detach().numpy())
+        out.append({
+            'idx': idxs[i],
+            'original': originals[i],
+            'predicted': preds[i],
+            'cosine_similarity': similarity 
+        })
+    return out
 
 def process_text(text):
     model_name = "microsoft/unixcoder-base"
@@ -78,7 +95,7 @@ def process_text(text):
     inputs = tokenizer(text, return_tensors='pt')
     out = []
     for idx in tqdm(range(len(inputs['input_ids'][0]))):
-        out.append(for_idx(idx, deepcopy(inputs), model, tokenizer, embeddings_cache))
+        out = out + for_idx([idx], deepcopy(inputs), model, tokenizer, embeddings_cache)
     return out
 
 def similarity_to_color(similarity):
