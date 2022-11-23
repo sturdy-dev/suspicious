@@ -11,8 +11,9 @@
   <title>sus : {{ file_name }}</title>
 </head>
 
-<body>
-  <code id="tokens">
+<body class="bg-zinc-900 text-orange-200">
+  <div class="flex justify-center h-screen">
+    <code id="tokens" class="text-stone-500 w-2/3 text-sm border border-stone-600 rounded-sm p-4">
   <div>
     {%- for token in tokens -%}
       {%- if token.original == '\n' -%}
@@ -20,11 +21,11 @@
       {%- else -%}
         <span 
           data-tooltip-target="tooltip-{{ loop.index }}"
-          class="hover:bg-slate-300 cursor-pointer {{ token.text_color }}"
+          class="hover:border-stone-700 border-transparent border cursor-pointer {{ token.text_color }}"
           >{{- token.original.replace(' ', '&nbsp;')  -}}</span><div 
           id="tooltip-{{ loop.index }}" 
           role="tooltip" 
-          class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+          class="flex flex-row absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
             {{- token.predicted.replace(' ', '&nbsp;') -}}
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
@@ -32,6 +33,7 @@
     {%- endfor -%}
   </div>
   </code>
+  </div>
   <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </body>
 

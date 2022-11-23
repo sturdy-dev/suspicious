@@ -82,8 +82,10 @@ def process_text(text):
     return out
 
 def similarity_to_color(similarity):
-    if similarity < 0.8:
+    if similarity < 0.5:
         return 'text-red-500'
+    elif similarity < 0.9:
+        return 'text-red-400'
     
 def prep_for_rendering(processed_text):
     out = processed_text[1:-1] # skip start and end tokens
