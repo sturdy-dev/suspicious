@@ -1,0 +1,38 @@
+{# templates/index.html.j2 #}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>sus : {{ file_name }}</title>
+</head>
+
+<body>
+  <code id="tokens">
+  <div>
+    {%- for token in tokens -%}
+      {%- if token.original == '\n' -%}
+        <br>
+      {%- else -%}
+        <span 
+          data-tooltip-target="tooltip-{{ loop.index }}"
+          class="hover:bg-slate-300 cursor-pointer {{ token.text_color }}"
+          >{{- token.original.replace(' ', '&nbsp;')  -}}</span><div 
+          id="tooltip-{{ loop.index }}" 
+          role="tooltip" 
+          class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-gray-900 rounded-lg shadow-sm opacity-0 transition-opacity duration-300 tooltip dark:bg-gray-700">
+            {{- token.predicted.replace(' ', '&nbsp;') -}}
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  </code>
+  <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+</body>
+
+</html>

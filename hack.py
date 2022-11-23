@@ -7,6 +7,8 @@ import numpy as np
 from tqdm import tqdm
 import pickle
 import os
+from jinja2 import Template, Environment, FileSystemLoader
+import webbrowser
 
 text = """def _get_repo_functions(root, supported_file_extensions, relevant_node_types):
     functions = []
@@ -79,6 +81,14 @@ def process_text(text):
         out.append(for_idx(idx, deepcopy(inputs), model, tokenizer, embeddings_cache))
     return out
 
+def similarity_to_color(similarity):
+    if similarity < 0.8:
+        return 'text-red-500'
+    
+def prep_for_rendering(processed_text):
+    out = processed_text[1:-1] # skip start and end tokens
+    return [ {**o, **{'text_color': similarity_to_color(o['cosine_similarity'])}} for o in out]
+
 def main():
     processed_text = None
     if os.path.exists('.testout.p'):
@@ -88,6 +98,16 @@ def main():
     else:
         processed_text = process_text(text)
         pickle.dump(processed_text, open('.testout.p', 'wb'))
+        
+        
+    environment = Environment(loader=FileSystemLoader("templates/"))
+    template = environment.get_template("index.html.j2")
+    content = template.render(tokens=prep_for_rendering(processed_text), file_name='foo.py')
+    with open("index.html", "w") as f:
+        f.write(content)
+    url = 'file://' + os.getcwd() + '/index.html'
+    webbrowser.open(url) 
+    # print(content)
 
 
 if __name__ == '__main__':
