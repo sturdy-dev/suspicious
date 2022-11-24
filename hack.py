@@ -9,6 +9,7 @@ import pickle
 import os
 from jinja2 import Template, Environment, FileSystemLoader
 import webbrowser
+import argparse
 
 text = """def _get_repo_functions(root, supported_file_extensions, relevant_node_types):
     functions = []
@@ -77,7 +78,7 @@ def for_idx(idxs, inputs, model, tokenizer, embeddings_cache):
         })
     return out
 
-def process_text(text):
+def process_text(text, mask_ratio=0.1):
     model_name = "microsoft/unixcoder-base"
     device = 'cpu'
    
@@ -92,11 +93,24 @@ def process_text(text):
     model.lm_head = lm_head
 
     embeddings_cache = {}
-    inputs = tokenizer(text, return_tensors='pt')
+    inputs = tokenizer(text, return_tensors='pt', truncation=True, max_length=1024)
     out = []
-    for idx in tqdm(range(len(inputs['input_ids'][0]))):
-        out = out + for_idx([idx], deepcopy(inputs), model, tokenizer, embeddings_cache)
-    return out
+
+    ln = len(inputs['input_ids'][0])
+    n_masks = int(mask_ratio * ln)
+    last = None
+    for i in tqdm(range(int(ln / n_masks))):
+        idxs = []
+        for j in range(n_masks):
+            val = (j*  int(ln / n_masks) + i)
+            idxs.append(val)
+            last = val
+        out = out + for_idx(idxs, deepcopy(inputs), model, tokenizer, embeddings_cache)
+        
+    for i in range(last+1, ln, 1):
+        out = out + for_idx([i], deepcopy(inputs), model, tokenizer, embeddings_cache)
+        
+    return sorted(out, key=lambda x: x['idx'])
 
 def similarity_to_color(similarity):
     if similarity < 0.5:
@@ -108,16 +122,8 @@ def prep_for_rendering(processed_text):
     out = processed_text[1:-1] # skip start and end tokens
     return [ {**o, **{'text_color': similarity_to_color(o['cosine_similarity'])}} for o in out]
 
-def main():
-    processed_text = None
-    if os.path.exists('.testout.p'):
-        print('Loading processed text from file')
-        with open('.testout.p', 'rb') as f:
-            processed_text = pickle.load(f)
-    else:
-        processed_text = process_text(text)
-        pickle.dump(processed_text, open('.testout.p', 'wb'))
-        
+def run(text):
+    processed_text = process_text(text)
         
     environment = Environment(loader=FileSystemLoader("templates/"))
     template = environment.get_template("index.html.j2")
@@ -126,7 +132,16 @@ def main():
         f.write(content)
     url = 'file://' + os.getcwd() + '/index.html'
     webbrowser.open(url) 
-    # print(content)
+
+def main():
+    parser = argparse.ArgumentParser(
+        prog='sus', description='Detetects suspicious code in a given file')
+    parser.add_argument('file', nargs='?', default='hack.py')
+    args = parser.parse_args()
+    
+    with open(args.file, 'r') as f:
+        text = f.read()
+        run(text)
 
 
 if __name__ == '__main__':
