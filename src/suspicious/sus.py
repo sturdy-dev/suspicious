@@ -88,7 +88,7 @@ def process_batch(inputs, mask_ratio, model, tokenizer, embeddings_cache):
 
 def process_text(text, mask_ratio=0.1):
     logging.set_verbosity_error()
-    model_name = "microsoft/unixcoder-base"
+    model_name = "microsoft/unixcoder-base-nine"
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     config = RobertaConfig.from_pretrained(model_name)
