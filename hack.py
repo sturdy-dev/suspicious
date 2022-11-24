@@ -11,6 +11,8 @@ from jinja2 import Template, Environment, FileSystemLoader
 import webbrowser
 import argparse
 import torch.nn.functional as nnf
+from math import ceil
+import textwrap
 
 
 def cosine_similarity(a, b):
@@ -73,23 +75,7 @@ def for_idx(idxs, inputs, model, tokenizer, embeddings_cache):
     return out
 
 
-def process_text(text, mask_ratio=0.1):
-    model_name = "microsoft/unixcoder-base"
-    device = 'cpu'
-
-    config = RobertaConfig.from_pretrained(model_name)
-    config.is_decoder = False
-
-    tokenizer = RobertaTokenizer.from_pretrained(model_name)
-    model = RobertaForMaskedLM.from_pretrained(model_name, config=config)
-
-    lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
-    lm_head.weight = model.base_model.embeddings.word_embeddings.weight
-    model.lm_head = lm_head
-
-    embeddings_cache = {}
-    inputs = tokenizer(text, return_tensors='pt',
-                       truncation=True, max_length=1024)
+def process_batch(inputs, mask_ratio, model, tokenizer, embeddings_cache):
     out = []
 
     ln = len(inputs['input_ids'][0])
@@ -107,8 +93,37 @@ def process_text(text, mask_ratio=0.1):
     for i in tqdm(range(last+1, ln, 1)):
         out = out + for_idx([i], deepcopy(inputs), model,
                             tokenizer, embeddings_cache)
+    return out
 
-    return sorted(out, key=lambda x: x['idx'])
+
+def process_text(text, mask_ratio=0.1):
+    model_name = "microsoft/unixcoder-base"
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+    config = RobertaConfig.from_pretrained(model_name)
+    config.is_decoder = False
+
+    tokenizer = RobertaTokenizer.from_pretrained(model_name)
+    model = RobertaForMaskedLM.from_pretrained(model_name, config=config)
+
+    lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
+    lm_head.weight = model.base_model.embeddings.word_embeddings.weight
+    model.lm_head = lm_head
+
+    embeddings_cache = {}
+    inputs = tokenizer(text, return_tensors='pt',
+                       truncation=True, max_length=1024)
+    out = []
+    print('n batches:', int(ceil(len(text)/2500)))
+    for i in range(0, len(text), 2500):  # this is dumb
+        text_batch = text[i:i + 2500]
+        inputs = tokenizer(text_batch, return_tensors='pt',
+                           truncation=True, max_length=1024)
+        result = sorted(process_batch(inputs, mask_ratio, model,
+                        tokenizer, embeddings_cache), key=lambda x: x['idx'])
+        out = out + result
+
+    return out
 
 
 def choose_color(token):
@@ -123,17 +138,16 @@ def choose_color(token):
 
 
 def prep_for_rendering(processed_text):
-    out = processed_text[1:-1]  # skip start and end tokens
+    out = [token for token in processed_text if token['original'].strip(
+    ) != '<s>' and token['original'].strip() != '</s>']
     return [{**o, **{'text_color': choose_color(o)}} for o in out]
 
 
-def run(text):
-    processed_text = process_text(text)
-
+def render(tokens, file_name):
     environment = Environment(loader=FileSystemLoader("templates/"))
     template = environment.get_template("index.html.j2")
-    content = template.render(tokens=prep_for_rendering(
-        processed_text), file_name='foo.py')
+    content = template.render(
+        tokens=prep_for_rendering(tokens), file_name=file_name)
     with open("index.html", "w") as f:
         f.write(content)
     url = 'file://' + os.getcwd() + '/index.html'
@@ -148,7 +162,8 @@ def main():
 
     with open(args.file, 'r') as f:
         text = f.read()
-        run(text)
+        tokens = process_text(text)
+        render(tokens)
 
 
 if __name__ == '__main__':
