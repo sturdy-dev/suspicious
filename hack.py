@@ -1,5 +1,6 @@
 
 from transformers import RobertaTokenizer, RobertaConfig, RobertaForMaskedLM
+from transformers import logging
 import torch
 import torch.nn as nn
 from copy import deepcopy
@@ -80,23 +81,20 @@ def process_batch(inputs, mask_ratio, model, tokenizer, embeddings_cache):
 
     ln = len(inputs['input_ids'][0])
     n_masks = int(mask_ratio * ln)
-    last = None
-    for i in tqdm(range(int(ln / n_masks))):
+    for i in tqdm(range(int((ln / n_masks)))):
         idxs = []
-        for j in range(n_masks):
+        for j in range(n_masks + 1):
             val = (j * int(ln / n_masks) + i)
-            idxs.append(val)
-            last = val
+            if val < ln:
+                idxs.append(val)
         out = out + for_idx(idxs, deepcopy(inputs), model,
                             tokenizer, embeddings_cache)
 
-    for i in tqdm(range(last+1, ln, 1)):
-        out = out + for_idx([i], deepcopy(inputs), model,
-                            tokenizer, embeddings_cache)
     return out
 
 
 def process_text(text, mask_ratio=0.1):
+    logging.set_verbosity_error()
     model_name = "microsoft/unixcoder-base"
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -114,8 +112,10 @@ def process_text(text, mask_ratio=0.1):
     inputs = tokenizer(text, return_tensors='pt',
                        truncation=True, max_length=1024)
     out = []
-    print('n batches:', int(ceil(len(text)/2500)))
-    for i in range(0, len(text), 2500):  # this is dumb
+    n_batches = int(ceil(len(text)/2500))
+    if n_batches > 1:
+        print("your file's so big it had to be split in {} batches...".format(n_batches))
+    for i in range(0, len(text), 2500):
         text_batch = text[i:i + 2500]
         inputs = tokenizer(text_batch, return_tensors='pt',
                            truncation=True, max_length=1024)
@@ -163,7 +163,7 @@ def main():
     with open(args.file, 'r') as f:
         text = f.read()
         tokens = process_text(text)
-        render(tokens)
+        render(tokens, args.file)
 
 
 if __name__ == '__main__':
