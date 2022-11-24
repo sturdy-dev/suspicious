@@ -10,6 +10,7 @@ import os
 from jinja2 import Template, Environment, FileSystemLoader
 import webbrowser
 import argparse
+import torch.nn.functional as nnf
 
 text = """def _get_repo_functions(root, supported_file_extensions, relevant_node_types):
     functions = []
@@ -58,6 +59,11 @@ def for_idx(idxs, inputs, model, tokenizer, embeddings_cache):
     mask_token_index = torch.where(inputs["input_ids"] == tokenizer.mask_token_id)[1]
     
     mask_token_logits = encoder_output.logits[0, mask_token_index, :]
+
+    # this is slow AF????
+    prob = nnf.softmax(mask_token_logits, dim=1)
+    top_ps, _ = prob.topk(1, dim = 1)
+    
     preds = []
     preds_embeddings = []
     tops = torch.topk(mask_token_logits, 1, dim=1)
@@ -74,7 +80,8 @@ def for_idx(idxs, inputs, model, tokenizer, embeddings_cache):
             'idx': idxs[i],
             'original': originals[i],
             'predicted': preds[i],
-            'cosine_similarity': similarity 
+            'cosine_similarity': similarity,
+            'probability': top_ps[i].item(),
         })
     return out
 
@@ -107,20 +114,22 @@ def process_text(text, mask_ratio=0.1):
             last = val
         out = out + for_idx(idxs, deepcopy(inputs), model, tokenizer, embeddings_cache)
         
-    for i in range(last+1, ln, 1):
+    for i in tqdm(range(last+1, ln, 1)):
         out = out + for_idx([i], deepcopy(inputs), model, tokenizer, embeddings_cache)
         
     return sorted(out, key=lambda x: x['idx'])
 
-def similarity_to_color(similarity):
-    if similarity < 0.5:
-        return 'text-red-500'
-    elif similarity < 0.9:
-        return 'text-red-400'
+def choose_color(token):
+    if token['original'].strip() != token['predicted'].strip():
+        if token['cosine_similarity'] < 0.9:
+            if token['probability'] > 0.5:
+                return 'text-red-500'
+            else:
+                return 'text-stone-300'
     
 def prep_for_rendering(processed_text):
     out = processed_text[1:-1] # skip start and end tokens
-    return [ {**o, **{'text_color': similarity_to_color(o['cosine_similarity'])}} for o in out]
+    return [ {**o, **{'text_color': choose_color(o)}} for o in out]
 
 def run(text):
     processed_text = process_text(text)
@@ -136,7 +145,7 @@ def run(text):
 def main():
     parser = argparse.ArgumentParser(
         prog='sus', description='Detetects suspicious code in a given file')
-    parser.add_argument('file', nargs='?', default='hack.py')
+    parser.add_argument('file', nargs='?', default='foo.py')
     args = parser.parse_args()
     
     with open(args.file, 'r') as f:

@@ -11,9 +11,17 @@
   <title>sus : {{ file_name }}</title>
 </head>
 
-<body class="bg-zinc-900 text-orange-200">
-  <div class="flex justify-center h-screen">
-    <code id="tokens" class="text-stone-500 w-2/3 text-sm border border-stone-600 rounded-sm p-4">
+<body class="bg-zinc-900 text-orange-200 text-xs flex justify-center">
+  <div class="flex flex-col m-4">
+    <div class="">
+      <h1 class="text-lg">wtf am i looking at?</h1>
+      <ul class="list-disc ml-4">
+        <li><span class="font-mono text-stone-500">grey</span> means prediction is the same as the original</li>
+        <li><span class="font-mono text-stone-300">brighter grey</span> means the model had a different prediction but with super low confidence</li>
+        <li><span class="font-mono text-red-500">red</span> means there was a different prediction <b>and</b> confidence was higher</li>
+      </ul>
+    </div>
+    <code id="tokens" class="overflow-auto text-stone-500 w-2/3 text-sm border border-stone-600 rounded-sm p-4 my-4">
   <div>
     {%- for token in tokens -%}
       {%- if token.original == '\n' -%}
@@ -25,8 +33,13 @@
           >{{- token.original.replace(' ', '&nbsp;')  -}}</span><div 
           id="tooltip-{{ loop.index }}" 
           role="tooltip" 
-          class="flex flex-row absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
-            {{- token.predicted.replace(' ', '&nbsp;') -}}
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">
+              {{- token.probability|round(2) -}}<br>
+            </span>
+            <span>
+              {{- token.predicted.replace(' ', '&nbsp;') -}}
+            </span>
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
       {%- endif -%}
