@@ -1,4 +1,3 @@
-
 from transformers import RobertaTokenizer, RobertaConfig, RobertaForMaskedLM
 from transformers import logging
 import torch
@@ -6,14 +5,8 @@ import torch.nn as nn
 from copy import deepcopy
 import numpy as np
 from tqdm import tqdm
-import pickle
-import os
-from jinja2 import Template, Environment, FileSystemLoader
-import webbrowser
-import argparse
 import torch.nn.functional as nnf
 from math import ceil
-import textwrap
 
 
 def cosine_similarity(a, b):
@@ -124,47 +117,3 @@ def process_text(text, mask_ratio=0.1):
         out = out + result
 
     return out
-
-
-def choose_color(token):
-    if token['original'].strip() != token['predicted'].strip():
-        if token['cosine_similarity'] < 0.9:
-            if token['probability'] > 0.8:
-                return 'text-red-500'
-            elif token['probability'] > 0.5:
-                return 'text-red-300'
-            else:
-                return 'text-stone-300'
-
-
-def prep_for_rendering(processed_text):
-    out = [token for token in processed_text if token['original'].strip(
-    ) != '<s>' and token['original'].strip() != '</s>']
-    return [{**o, **{'text_color': choose_color(o)}} for o in out]
-
-
-def render(tokens, file_name):
-    environment = Environment(loader=FileSystemLoader("templates/"))
-    template = environment.get_template("index.html.j2")
-    content = template.render(
-        tokens=prep_for_rendering(tokens), file_name=file_name)
-    with open("index.html", "w") as f:
-        f.write(content)
-    url = 'file://' + os.getcwd() + '/index.html'
-    webbrowser.open(url)
-
-
-def main():
-    parser = argparse.ArgumentParser(
-        prog='sus', description='Detetects suspicious code in a given file')
-    parser.add_argument('file', nargs='?')
-    args = parser.parse_args()
-
-    with open(args.file, 'r') as f:
-        text = f.read()
-        tokens = process_text(text)
-        render(tokens, args.file)
-
-
-if __name__ == '__main__':
-    main()
