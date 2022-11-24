@@ -34,7 +34,7 @@
         <span 
           data-tooltip-target="tooltip-{{ loop.index }}"
           class="hover:border-stone-700 border-transparent border cursor-pointer {{ token.text_color }}"
-          >{{- token.original.replace(' ', '&nbsp;')  -}}</span><div 
+          >{{- token.original.replace('\t', '&nbsp;&nbsp;').replace(' ', '&nbsp;')  -}}</span><div 
           id="tooltip-{{ loop.index }}" 
           role="tooltip" 
           class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
@@ -42,7 +42,7 @@
               {{- token.probability|round(2) -}}<br>
             </span>
             <span>
-              {{- token.predicted.replace(' ', '&nbsp;') -}}
+              {{- token.predicted.replace('\t', '&nbsp;&nbsp;').replace(' ', '&nbsp;') -}}
             </span>
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
