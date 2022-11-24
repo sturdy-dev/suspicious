@@ -12,16 +12,20 @@
 </head>
 
 <body class="bg-zinc-900 text-orange-200 text-xs flex justify-center">
-  <div class="flex flex-col m-4">
+  <div class="flex flex-col m-4 w-2/3">
     <div class="">
       <h1 class="text-lg">wtf am i looking at?</h1>
       <ul class="list-disc ml-4">
         <li><span class="font-mono text-stone-500">grey</span> means prediction is the same as the original</li>
-        <li><span class="font-mono text-stone-300">brighter grey</span> means the model had a different prediction but with super low confidence</li>
-        <li><span class="font-mono text-red-500">red</span> means there was a different prediction <b>and</b> confidence was higher</li>
+        <li><span class="font-mono text-stone-300">brighter grey</span> means the model had a different prediction but
+          with super low confidence</li>
+        <li><span class="font-mono text-red-300">light red</span> means things are looking a little sus</li>
+        <li><span class="font-mono text-red-500">red</span> means there was a different prediction <b>and</b> confidence
+          was higher</li>
+        <li>in all cases, the model is hallucinating tokens, so obviously, use your judgement</li>
       </ul>
     </div>
-    <code id="tokens" class="overflow-auto text-stone-500 w-2/3 text-sm border border-stone-600 rounded-sm p-4 my-4">
+    <code id="tokens" class="overflow-auto text-stone-500 text-sm border border-stone-600 rounded-sm p-4 my-4">
   <div>
     {%- for token in tokens -%}
       {%- if token.original == '\n' -%}
