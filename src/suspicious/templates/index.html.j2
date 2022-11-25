@@ -41,8 +41,8 @@
             <span class="text-xs text-stone-500">
               {{- token.probability|round(2) -}}<br>
             </span>
-            <span>
-              {{- token.predicted.replace('\t', '&nbsp;&nbsp;').replace(' ', '&nbsp;') -}}
+            <span style="white-space: pre">
+              {{- token.predicted -}}
             </span>
             <div class="tooltip-arrow" data-popper-arrow></div>
         </div>

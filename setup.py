@@ -5,7 +5,7 @@ with open('README.md', 'r') as f:
 
 setup(
     name='suspicious',
-    version='0.1.0',
+    version='0.1.1',
     author='Kiril Videlov',
     author_email='kiril@codeball.ai',
     description='Detects possibly suspicious stuff in your source files',
