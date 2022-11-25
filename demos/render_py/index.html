@@ -1,0 +1,3401 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>sus : /Users/kiril/src/suspicious/src/suspicious/render.py</title>
+</head>
+
+<body class="bg-zinc-900 text-orange-200 text-xs flex justify-center">
+  <div class="flex flex-col m-4 w-2/3">
+    <div class="">
+      <h1 class="text-lg">wtf am i looking at?</h1>
+      <ul class="list-disc ml-4">
+        <li><span class="font-mono text-stone-500">grey</span> means prediction is the same as the original</li>
+        <li><span class="font-mono text-stone-300">brighter grey</span> means the model had a different prediction but
+          with super low confidence</li>
+        <li><span class="font-mono text-red-300">light red</span> means things are looking a little sus</li>
+        <li><span class="font-mono text-red-500">red</span> means there was a different prediction <b>and</b> confidence
+          was higher</li>
+        <li>in all cases, the model is hallucinating tokens, so obviously, use your judgement</li>
+      </ul>
+    </div>
+    <code id="tokens" class="overflow-auto text-stone-500 text-sm border border-stone-600 rounded-sm p-4 my-4">
+  <div><span 
+          data-tooltip-target="tooltip-1"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >from</span><div 
+          id="tooltip-1" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.13<br>
+            </span>
+            <span>text</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-2"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >&nbsp;j</span><div 
+          id="tooltip-2" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.15<br>
+            </span>
+            <span>text</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-3"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-500"
+          >inja</span><div 
+          id="tooltip-3" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.91<br>
+            </span>
+            <span>j</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-4"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >2</span><div 
+          id="tooltip-4" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.28<br>
+            </span>
+            <span>2</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-5"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-300"
+          >&nbsp;import</span><div 
+          id="tooltip-5" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.56<br>
+            </span>
+            <span>,</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-6"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;Template</span><div 
+          id="tooltip-6" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.11<br>
+            </span>
+            <span>&nbsp;Template</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-7"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >,</span><div 
+          id="tooltip-7" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>,</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-8"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;Environment</span><div 
+          id="tooltip-8" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;Environment</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-9"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >,</span><div 
+          id="tooltip-9" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>,</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-10"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;FileSystem</span><div 
+          id="tooltip-10" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.29<br>
+            </span>
+            <span>&nbsp;FileSystem</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-11"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >Loader</span><div 
+          id="tooltip-11" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.82<br>
+            </span>
+            <span>Loader</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-13"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >import</span><div 
+          id="tooltip-13" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>import</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-14"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;we</span><div 
+          id="tooltip-14" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;we</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-15"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >bb</span><div 
+          id="tooltip-15" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>bb</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-16"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >rowser</span><div 
+          id="tooltip-16" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>rowser</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-18"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >import</span><div 
+          id="tooltip-18" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>import</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-19"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;os</span><div 
+          id="tooltip-19" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.5<br>
+            </span>
+            <span>&nbsp;os</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-21"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >import</span><div 
+          id="tooltip-21" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>import</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-22"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;pkg</span><div 
+          id="tooltip-22" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;pkg</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-23"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-23" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-24"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >resources</span><div 
+          id="tooltip-24" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>resources</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><br><br><span 
+          data-tooltip-target="tooltip-28"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >def</span><div 
+          id="tooltip-28" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>def</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-29"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;_</span><div 
+          id="tooltip-29" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-30"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >choose</span><div 
+          id="tooltip-30" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>choose</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-31"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-31" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-32"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >color</span><div 
+          id="tooltip-32" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.95<br>
+            </span>
+            <span>color</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-33"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-33" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-34"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >token</span><div 
+          id="tooltip-34" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-35"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >):</span><div 
+          id="tooltip-35" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>):</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-37"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-37" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-38"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;if</span><div 
+          id="tooltip-38" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>&nbsp;if</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-39"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;token</span><div 
+          id="tooltip-39" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-40"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >['</span><div 
+          id="tooltip-40" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>['</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-41"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >original</span><div 
+          id="tooltip-41" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.43<br>
+            </span>
+            <span>original</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-42"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'].</span><div 
+          id="tooltip-42" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>'].</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-43"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >strip</span><div 
+          id="tooltip-43" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>strip</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-44"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >()</span><div 
+          id="tooltip-44" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>()</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-45"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >!=</span><div 
+          id="tooltip-45" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.64<br>
+            </span>
+            <span>!=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-46"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;token</span><div 
+          id="tooltip-46" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>&nbsp;token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-47"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >['</span><div 
+          id="tooltip-47" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>['</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-48"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >predicted</span><div 
+          id="tooltip-48" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.26<br>
+            </span>
+            <span>text</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-49"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'].</span><div 
+          id="tooltip-49" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>'].</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-50"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >strip</span><div 
+          id="tooltip-50" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>strip</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-51"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >():</span><div 
+          id="tooltip-51" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>():</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-53"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-53" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-54"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;if</span><div 
+          id="tooltip-54" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>&nbsp;if</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-55"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;token</span><div 
+          id="tooltip-55" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-56"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >['</span><div 
+          id="tooltip-56" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>['</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-57"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >cos</span><div 
+          id="tooltip-57" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.62<br>
+            </span>
+            <span>cos</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-58"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-300"
+          >ine</span><div 
+          id="tooltip-58" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.69<br>
+            </span>
+            <span>metic</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-59"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-59" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-60"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >similar</span><div 
+          id="tooltip-60" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.95<br>
+            </span>
+            <span>similar</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-61"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >ity</span><div 
+          id="tooltip-61" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.96<br>
+            </span>
+            <span>ity</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-62"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >']</span><div 
+          id="tooltip-62" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>']</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-63"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-300"
+          >&nbsp;<</span><div 
+          id="tooltip-63" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.75<br>
+            </span>
+            <span>&nbsp;></span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-64"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;0</span><div 
+          id="tooltip-64" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.95<br>
+            </span>
+            <span>&nbsp;0</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-65"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-65" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-66"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >9</span><div 
+          id="tooltip-66" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.2<br>
+            </span>
+            <span>5</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-67"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >:</span><div 
+          id="tooltip-67" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>:</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-69"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-69" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-70"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;if</span><div 
+          id="tooltip-70" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>&nbsp;if</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-71"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;token</span><div 
+          id="tooltip-71" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-72"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >['</span><div 
+          id="tooltip-72" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>['</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-73"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >probability</span><div 
+          id="tooltip-73" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>probability</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-74"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >']</span><div 
+          id="tooltip-74" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>']</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-75"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;></span><div 
+          id="tooltip-75" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.69<br>
+            </span>
+            <span>&nbsp;></span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-76"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;0</span><div 
+          id="tooltip-76" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>&nbsp;0</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-77"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-77" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-78"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >8</span><div 
+          id="tooltip-78" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.31<br>
+            </span>
+            <span>5</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-79"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >:</span><div 
+          id="tooltip-79" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>:</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-81"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-81" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-82"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;return</span><div 
+          id="tooltip-82" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;return</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-83"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;'</span><div 
+          id="tooltip-83" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-84"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >text</span><div 
+          id="tooltip-84" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>text</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-85"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >-</span><div 
+          id="tooltip-85" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>-</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-86"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-300"
+          >red</span><div 
+          id="tooltip-86" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.53<br>
+            </span>
+            <span>green</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-87"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >-</span><div 
+          id="tooltip-87" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>-</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-88"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-300"
+          >500</span><div 
+          id="tooltip-88" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.6<br>
+            </span>
+            <span>300</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-89"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'</span><div 
+          id="tooltip-89" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-91"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-91" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-92"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;elif</span><div 
+          id="tooltip-92" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.9<br>
+            </span>
+            <span>&nbsp;elif</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-93"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;token</span><div 
+          id="tooltip-93" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-94"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >['</span><div 
+          id="tooltip-94" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>['</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-95"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >probability</span><div 
+          id="tooltip-95" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>probability</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-96"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >']</span><div 
+          id="tooltip-96" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>']</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-97"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;></span><div 
+          id="tooltip-97" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.54<br>
+            </span>
+            <span>&nbsp;></span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-98"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;0</span><div 
+          id="tooltip-98" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.96<br>
+            </span>
+            <span>&nbsp;0</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-99"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-99" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-100"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >5</span><div 
+          id="tooltip-100" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.18<br>
+            </span>
+            <span>9</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-101"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >:</span><div 
+          id="tooltip-101" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>:</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-103"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-103" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-104"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;return</span><div 
+          id="tooltip-104" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;return</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-105"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;'</span><div 
+          id="tooltip-105" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-106"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >text</span><div 
+          id="tooltip-106" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>text</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-107"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >-</span><div 
+          id="tooltip-107" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>-</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-108"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-300"
+          >red</span><div 
+          id="tooltip-108" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.6<br>
+            </span>
+            <span>green</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-109"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >-</span><div 
+          id="tooltip-109" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>-</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-110"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >300</span><div 
+          id="tooltip-110" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.26<br>
+            </span>
+            <span>200</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-111"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'</span><div 
+          id="tooltip-111" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-113"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-113" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.6<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-114"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;else</span><div 
+          id="tooltip-114" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>&nbsp;else</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-115"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >:</span><div 
+          id="tooltip-115" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>:</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-117"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-117" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-118"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;return</span><div 
+          id="tooltip-118" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;return</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-119"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;'</span><div 
+          id="tooltip-119" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-120"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >text</span><div 
+          id="tooltip-120" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>text</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-121"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >-</span><div 
+          id="tooltip-121" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>-</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-122"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >stone</span><div 
+          id="tooltip-122" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.37<br>
+            </span>
+            <span>red</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-123"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >-</span><div 
+          id="tooltip-123" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>-</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-124"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >300</span><div 
+          id="tooltip-124" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.19<br>
+            </span>
+            <span>200</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-125"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'</span><div 
+          id="tooltip-125" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><br><br><span 
+          data-tooltip-target="tooltip-129"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >def</span><div 
+          id="tooltip-129" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>def</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-130"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;_</span><div 
+          id="tooltip-130" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-131"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >prep</span><div 
+          id="tooltip-131" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>prep</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-132"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-132" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-133"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >for</span><div 
+          id="tooltip-133" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>for</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-134"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-134" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-135"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >rendering</span><div 
+          id="tooltip-135" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>rendering</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-136"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-136" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-137"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >processed</span><div 
+          id="tooltip-137" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>processed</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-138"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-138" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-139"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >text</span><div 
+          id="tooltip-139" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>text</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-140"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >):</span><div 
+          id="tooltip-140" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>):</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-142"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-142" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-143"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;out</span><div 
+          id="tooltip-143" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;out</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-144"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;=</span><div 
+          id="tooltip-144" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-145"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;[</span><div 
+          id="tooltip-145" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.92<br>
+            </span>
+            <span>&nbsp;[</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-146"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >token</span><div 
+          id="tooltip-146" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.66<br>
+            </span>
+            <span>token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-147"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;for</span><div 
+          id="tooltip-147" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;for</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-148"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;token</span><div 
+          id="tooltip-148" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-149"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;in</span><div 
+          id="tooltip-149" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;in</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-150"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;processed</span><div 
+          id="tooltip-150" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;processed</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-151"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-151" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-152"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >text</span><div 
+          id="tooltip-152" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>text</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-153"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;if</span><div 
+          id="tooltip-153" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;if</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-154"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;token</span><div 
+          id="tooltip-154" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-155"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >['</span><div 
+          id="tooltip-155" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>['</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-156"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >original</span><div 
+          id="tooltip-156" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.38<br>
+            </span>
+            <span>predicted</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-157"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'].</span><div 
+          id="tooltip-157" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>'].</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-158"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >strip</span><div 
+          id="tooltip-158" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>strip</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-159"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-159" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.67<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-161"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-161" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.18<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-162"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;)</span><div 
+          id="tooltip-162" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.91<br>
+            </span>
+            <span>&nbsp;)</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-163"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >!=</span><div 
+          id="tooltip-163" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.88<br>
+            </span>
+            <span>!=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-164"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >&nbsp;'</span><div 
+          id="tooltip-164" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.25<br>
+            </span>
+            <span>&nbsp;'~</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-165"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'</span><div 
+          id="tooltip-165" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.6<br>
+            </span>
+            <span>&nbsp;'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-166"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;and</span><div 
+          id="tooltip-166" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.87<br>
+            </span>
+            <span>&nbsp;and</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-167"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;token</span><div 
+          id="tooltip-167" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>&nbsp;token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-168"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >['</span><div 
+          id="tooltip-168" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>['</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-169"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-500"
+          >original</span><div 
+          id="tooltip-169" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.87<br>
+            </span>
+            <span>predicted</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-170"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'].</span><div 
+          id="tooltip-170" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>'].</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-171"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >strip</span><div 
+          id="tooltip-171" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>strip</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-172"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >()</span><div 
+          id="tooltip-172" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>()</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-173"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >!=</span><div 
+          id="tooltip-173" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.89<br>
+            </span>
+            <span>!=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-174"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-300"
+          >&nbsp;'</span><div 
+          id="tooltip-174" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.63<br>
+            </span>
+            <span>&nbsp;''</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-175"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >']</span><div 
+          id="tooltip-175" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.77<br>
+            </span>
+            <span>']</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-177"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-177" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-178"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;return</span><div 
+          id="tooltip-178" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;return</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-179"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;[{</span><div 
+          id="tooltip-179" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.58<br>
+            </span>
+            <span>&nbsp;[{</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-180"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >**</span><div 
+          id="tooltip-180" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>**</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-181"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >o</span><div 
+          id="tooltip-181" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.89<br>
+            </span>
+            <span>o</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-182"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >,</span><div 
+          id="tooltip-182" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.92<br>
+            </span>
+            <span>,</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-183"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;**</span><div 
+          id="tooltip-183" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.33<br>
+            </span>
+            <span>&nbsp;**</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-184"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >{'</span><div 
+          id="tooltip-184" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.93<br>
+            </span>
+            <span>{'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-185"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >text</span><div 
+          id="tooltip-185" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.22<br>
+            </span>
+            <span>original</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-186"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-186" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.92<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-187"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >color</span><div 
+          id="tooltip-187" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.77<br>
+            </span>
+            <span>color</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-188"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >':</span><div 
+          id="tooltip-188" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>':</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-189"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;_</span><div 
+          id="tooltip-189" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.95<br>
+            </span>
+            <span>&nbsp;_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-190"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >choose</span><div 
+          id="tooltip-190" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.96<br>
+            </span>
+            <span>choose</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-191"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-191" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-192"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >color</span><div 
+          id="tooltip-192" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>color</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-193"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-193" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.9<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-194"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-300"
+          >o</span><div 
+          id="tooltip-194" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.52<br>
+            </span>
+            <span>token</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-195"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-500"
+          >)}}</span><div 
+          id="tooltip-195" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.82<br>
+            </span>
+            <span>)}</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-196"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;for</span><div 
+          id="tooltip-196" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;for</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-197"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;o</span><div 
+          id="tooltip-197" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;o</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-198"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;in</span><div 
+          id="tooltip-198" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;in</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-199"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;out</span><div 
+          id="tooltip-199" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;out</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-200"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >]</span><div 
+          id="tooltip-200" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.57<br>
+            </span>
+            <span>]</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><br><br><span 
+          data-tooltip-target="tooltip-204"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >def</span><div 
+          id="tooltip-204" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>def</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-205"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;render</span><div 
+          id="tooltip-205" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.55<br>
+            </span>
+            <span>&nbsp;render</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-206"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-206" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-207"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >tokens</span><div 
+          id="tooltip-207" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>tokens</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-208"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >,</span><div 
+          id="tooltip-208" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>,</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-209"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;file</span><div 
+          id="tooltip-209" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;file</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-210"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-210" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-211"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >name</span><div 
+          id="tooltip-211" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>name</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-212"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >):</span><div 
+          id="tooltip-212" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>):</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-214"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-214" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-215"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;templates</span><div 
+          id="tooltip-215" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;templates</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-216"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;=</span><div 
+          id="tooltip-216" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-217"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;pkg</span><div 
+          id="tooltip-217" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;pkg</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-218"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-218" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-219"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >resources</span><div 
+          id="tooltip-219" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>resources</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-220"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-220" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-221"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >resource</span><div 
+          id="tooltip-221" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>resource</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-222"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-222" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-223"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >filename</span><div 
+          id="tooltip-223" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.35<br>
+            </span>
+            <span>string</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-224"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(__</span><div 
+          id="tooltip-224" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>(__</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-225"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >name</span><div 
+          id="tooltip-225" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.91<br>
+            </span>
+            <span>name</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-226"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >__,</span><div 
+          id="tooltip-226" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>__,</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-227"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;"</span><div 
+          id="tooltip-227" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.92<br>
+            </span>
+            <span>&nbsp;"</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-228"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >templates</span><div 
+          id="tooltip-228" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>templates</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-229"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >")</span><div 
+          id="tooltip-229" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>")</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-231"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-231" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-232"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;environment</span><div 
+          id="tooltip-232" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;environment</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-233"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;=</span><div 
+          id="tooltip-233" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-234"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;Environment</span><div 
+          id="tooltip-234" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;Environment</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-235"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-235" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.95<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-236"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >loader</span><div 
+          id="tooltip-236" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.8<br>
+            </span>
+            <span>loader</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-237"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >=</span><div 
+          id="tooltip-237" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-238"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >FileSystem</span><div 
+          id="tooltip-238" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.45<br>
+            </span>
+            <span>Template</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-239"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >Loader</span><div 
+          id="tooltip-239" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>Loader</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-240"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-240" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-241"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >templates</span><div 
+          id="tooltip-241" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>templates</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-242"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >))</span><div 
+          id="tooltip-242" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>))</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-244"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-244" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-245"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;template</span><div 
+          id="tooltip-245" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;template</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-246"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;=</span><div 
+          id="tooltip-246" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-247"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;environment</span><div 
+          id="tooltip-247" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.96<br>
+            </span>
+            <span>&nbsp;environment</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-248"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-248" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-249"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >get</span><div 
+          id="tooltip-249" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>get</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-250"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-250" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-251"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >template</span><div 
+          id="tooltip-251" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>template</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-252"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >("</span><div 
+          id="tooltip-252" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>("</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-253"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >index</span><div 
+          id="tooltip-253" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.77<br>
+            </span>
+            <span>index</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-254"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-254" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-255"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >html</span><div 
+          id="tooltip-255" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.96<br>
+            </span>
+            <span>html</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-256"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-256" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-257"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >j</span><div 
+          id="tooltip-257" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>j</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-258"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >2</span><div 
+          id="tooltip-258" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.51<br>
+            </span>
+            <span>2</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-259"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >")</span><div 
+          id="tooltip-259" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>")</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-261"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-261" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-262"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;content</span><div 
+          id="tooltip-262" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;content</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-263"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;=</span><div 
+          id="tooltip-263" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-264"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;template</span><div 
+          id="tooltip-264" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;template</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-265"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-265" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-266"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >render</span><div 
+          id="tooltip-266" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.94<br>
+            </span>
+            <span>render</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-267"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-267" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.85<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-269"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-269" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.75<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-270"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-stone-300"
+          >&nbsp;tokens</span><div 
+          id="tooltip-270" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.2<br>
+            </span>
+            <span>&nbsp;template</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-271"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >=_</span><div 
+          id="tooltip-271" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.72<br>
+            </span>
+            <span>=_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-272"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >prep</span><div 
+          id="tooltip-272" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>prep</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-273"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-273" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-274"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >for</span><div 
+          id="tooltip-274" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>for</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-275"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-275" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-276"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >rendering</span><div 
+          id="tooltip-276" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.96<br>
+            </span>
+            <span>rendering</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-277"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-277" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-278"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >tokens</span><div 
+          id="tooltip-278" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>tokens</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-279"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >),</span><div 
+          id="tooltip-279" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>),</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-280"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;file</span><div 
+          id="tooltip-280" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.96<br>
+            </span>
+            <span>&nbsp;file</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-281"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-281" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-282"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >name</span><div 
+          id="tooltip-282" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>name</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-283"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >=</span><div 
+          id="tooltip-283" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-284"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >file</span><div 
+          id="tooltip-284" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>file</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-285"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >_</span><div 
+          id="tooltip-285" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>_</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-286"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >name</span><div 
+          id="tooltip-286" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>name</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-287"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >)</span><div 
+          id="tooltip-287" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.95<br>
+            </span>
+            <span>)</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-289"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-289" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-290"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;with</span><div 
+          id="tooltip-290" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;with</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-291"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;open</span><div 
+          id="tooltip-291" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;open</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-292"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >("</span><div 
+          id="tooltip-292" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.75<br>
+            </span>
+            <span>("</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-293"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >index</span><div 
+          id="tooltip-293" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>index</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-294"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-294" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-295"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >html</span><div 
+          id="tooltip-295" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>html</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-296"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >",</span><div 
+          id="tooltip-296" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>",</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-297"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;"</span><div 
+          id="tooltip-297" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;"</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-298"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >w</span><div 
+          id="tooltip-298" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.72<br>
+            </span>
+            <span>w</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-299"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >")</span><div 
+          id="tooltip-299" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.93<br>
+            </span>
+            <span>")</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-300"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;as</span><div 
+          id="tooltip-300" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;as</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-301"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;f</span><div 
+          id="tooltip-301" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;f</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-302"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >:</span><div 
+          id="tooltip-302" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>:</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-304"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-304" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-305"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;f</span><div 
+          id="tooltip-305" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;f</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-306"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-306" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-307"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >write</span><div 
+          id="tooltip-307" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>write</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-308"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-308" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-309"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >content</span><div 
+          id="tooltip-309" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>content</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-310"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >)</span><div 
+          id="tooltip-310" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>)</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-312"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-312" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.97<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-313"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;url</span><div 
+          id="tooltip-313" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;url</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-314"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;=</span><div 
+          id="tooltip-314" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;=</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-315"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;'</span><div 
+          id="tooltip-315" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-316"
+          class="hover:border-stone-700 border-transparent border cursor-pointer text-red-500"
+          >file</span><div 
+          id="tooltip-316" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.92<br>
+            </span>
+            <span>http</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-317"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >://'</span><div 
+          id="tooltip-317" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.79<br>
+            </span>
+            <span>://'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-318"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;+</span><div 
+          id="tooltip-318" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;+</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-319"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;os</span><div 
+          id="tooltip-319" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;os</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-320"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-320" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-321"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >getcwd</span><div 
+          id="tooltip-321" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>getcwd</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-322"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >()</span><div 
+          id="tooltip-322" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>()</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-323"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;+</span><div 
+          id="tooltip-323" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;+</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-324"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;'/</span><div 
+          id="tooltip-324" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.87<br>
+            </span>
+            <span>&nbsp;'/</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-325"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >index</span><div 
+          id="tooltip-325" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.98<br>
+            </span>
+            <span>index</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-326"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-326" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-327"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >html</span><div 
+          id="tooltip-327" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>html</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-328"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >'</span><div 
+          id="tooltip-328" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>'</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br><span 
+          data-tooltip-target="tooltip-330"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;&nbsp;&nbsp;</span><div 
+          id="tooltip-330" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">0.99<br>
+            </span>
+            <span>&nbsp;&nbsp;&nbsp;</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-331"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >&nbsp;we</span><div 
+          id="tooltip-331" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>&nbsp;we</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-332"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >bb</span><div 
+          id="tooltip-332" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>bb</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-333"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >rowser</span><div 
+          id="tooltip-333" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>rowser</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-334"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >.</span><div 
+          id="tooltip-334" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>.</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-335"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >open</span><div 
+          id="tooltip-335" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>open</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-336"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >(</span><div 
+          id="tooltip-336" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>(</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-337"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >url</span><div 
+          id="tooltip-337" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>url</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><span 
+          data-tooltip-target="tooltip-338"
+          class="hover:border-stone-700 border-transparent border cursor-pointer None"
+          >)</span><div 
+          id="tooltip-338" 
+          role="tooltip" 
+          class="flex flex-col absolute invisible z-10 py-2 px-3 text-sm font-medium font-mono text-white bg-stone-700 rounded-lg shadow-sm opacity-0 transition-opacity duration-100 tooltip">
+            <span class="text-xs text-stone-500">1.0<br>
+            </span>
+            <span>)</span>
+            <div class="tooltip-arrow" data-popper-arrow></div>
+        </div><br></div>
+  </code>
+  </div>
+  <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
+</body>
+
+</html>

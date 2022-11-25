@@ -12,6 +12,14 @@ Example output:
 
 ![example results](./docs/screenshot.png)
 
+## Demo
+
+Here's the output of running the this application on it's own source files (so meta).
+
+- `cli.py` — [source code](./src/suspicious/cli.py) → [generated output](https://sturdy-dev.github.io/suspicious/demos/cli_py/)
+- `render.py` — [source code](./src/suspicious/render.py) → [generated output](https://sturdy-dev.github.io/suspicious/demos/render_py/)
+- `sus.py` — [source code](./src/suspicious/sus.py) → [generated output](https://sturdy-dev.github.io/suspicious/demos/sus_py/)
+
 ## Have I have seen this before?
 
 There was this post [AI found a bug in my code](https://news.ycombinator.com/item?id=33632610) on Hacker News which was pretty cool. I wanted to try it on my own code, but since there was no source code shered, I wanted to see what it would take to build it.
