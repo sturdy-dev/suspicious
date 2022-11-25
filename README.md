@@ -5,7 +5,7 @@
 </p
 
 <p align='center'>
-    Sniffs possibly suspicious stuff in your source code. 100% local, no data leaves your computer.
+    Catching bugs in code with AI, fully local CLI app. No data leaves your computer.
 </p>
 <p align='center'>
     <a href="https://github.com/sturdy-dev/suspicious/blob/main/LICENSE.txt">
