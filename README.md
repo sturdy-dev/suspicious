@@ -4,13 +4,36 @@
   <img width="200" src="https://raw.githubusercontent.com/sturdy-dev/suspicious/main/docs/ai_dog_wtf.png">
 </p
 
-Detects possibly suspicious stuff in your source files. 100% local, no data leaves your computer.
+<p align='center'>
+    Sniffs possibly suspicious stuff in your source code. 100% local, no data leaves your computer.
+</p>
+<p align='center'>
+    <a href="https://github.com/sturdy-dev/suspicious/blob/main/LICENSE.txt">
+        <img alt="GitHub"
+        src="https://img.shields.io/github/license/sturdy-dev/suspicious">
+    </a>
+    <a href="https://pypi.org/project/suspicious">
+     <img alt="PyPi"
+ src="https://img.shields.io/pypi/v/suspicious">
+    </a>
+</p>
+<p align="center">
+  <a href="#wtf-is-this">🤔 WTF is this</a> •
+  <a href="#demo">🪄 Demos</a> •
+  <a href="#installation">🔧 Installation</a> •
+  <a href="#usage">💻 Usage</a> •
+  <a href="#how-does-it-work">🧠 How it works</a>
+</p>
+
+-------------------------------------------------------------------
 
 ## WTF is this?
 
 This is a CLI application that analyzes the a source code file using an AI model and shows you things that look suspicious to it.
 
 It does **not** use rules or static analysis the way a linter tool would. Instead, the model generates it's own code suggestions based on the surrounding context. Check out [how it works](#how-does-it-work).
+
+> NB: All processing is done on your hardware and no data is transmitted to the Internet
 
 Example output:
 
