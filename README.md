@@ -1,5 +1,9 @@
 # Suspicious
 
+<p align="center">
+  <img width="200" src="https://raw.githubusercontent.com/sturdy-dev/suspicious/main/docs/ai_dog_wtf.png">
+</p
+
 Detects possibly suspicious stuff in your source files. 100% local, no data leaves your computer.
 
 ## WTF is this?
