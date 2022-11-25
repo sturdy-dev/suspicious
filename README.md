@@ -18,7 +18,7 @@
     </a>
 </p>
 <p align="center">
-  <a href="#wtf-is-this">🤔 WTF is this</a> •
+  <a href="#overview">🤔 Overview</a> •
   <a href="#demo">🪄 Demos</a> •
   <a href="#installation">🔧 Installation</a> •
   <a href="#usage">💻 Usage</a> •
@@ -27,7 +27,7 @@
 
 -------------------------------------------------------------------
 
-## WTF is this?
+## Overview 
 
 This is a CLI application that analyzes a source code file using an AI model. It then shows you parts that look suspicious to it.
 
