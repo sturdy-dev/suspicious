@@ -77,6 +77,8 @@ You can run the program like this:
 sus /path/to/file.py
 ```
 
+> Note that when you run this for the first time, the application will need to download a model (~500 MB) — [more info](#model) section.
+
 This will generate and open an `.html` file with the results.
 
 - `grey` means prediction is the same as the original
