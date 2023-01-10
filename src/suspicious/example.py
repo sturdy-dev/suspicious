@@ -1,10 +1,15 @@
 from transformers import RobertaTokenizer, RobertaConfig, RobertaForMaskedLM
 from transformers import logging
+import torch.nn.functional as nnf
+from transformers import pipeline
+import numpy as np
+
+from copy import deepcopy
 import torch
 import torch.nn as nn
 
 text = """
-def <mask>():
+def main():
     parser = argparse.ArgumentParser(
         prog='sus', description='Detects possibly suspicious stuff in your source files')
     parser.add_argument('file', nargs='?', help='The file to analyze')
@@ -18,6 +23,8 @@ def <mask>():
 if __name__ == '__main__':
     main()
 """
+def cosine_similarity(a, b):
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
 
 def for_idx(idx, inputs, model, tokenizer, embeddings_cache):
     original = tokenizer.decode(inputs['input_ids'][0][idx])
@@ -47,20 +54,67 @@ lm_head = nn.Linear(config.hidden_size, config.vocab_size, bias=False)
 lm_head.weight = model.base_model.embeddings.word_embeddings.weight
 model.lm_head = lm_head
 
-inputs = tokenizer(text, return_tensors='pt',
-                       truncation=True, max_length=1024)
+def embeddings(text, tokenizer, model, cache):
+    if text in cache:
+        return cache[text]
+    else:
+        inputs = tokenizer(text, return_tensors='pt')
+        encoder_out = model(**inputs, output_hidden_states=True)
+        embeddings = encoder_out.hidden_states[0][0, 1, :]
+        cache[text] = embeddings
+        return embeddings
     
-# idx = 3 # the index of the token to be masked
-# original = tokenizer.decode(inputs['input_ids'][0][idx])
-# print(original) # main (actual text of token)
+def for_idx(idxs, inputs, model, tokenizer, embeddings_cache):
+    originals = []
+    originals_embeddings = []
+    for idx in idxs:
+        original = tokenizer.decode(inputs['input_ids'][0][idx])
+        originals.append(original)
+        original_embeddings = embeddings(
+            original, tokenizer, model, embeddings_cache)
+        originals_embeddings.append(original_embeddings)
 
-# inputs.input_ids[torch.tensor(0), torch.tensor(idx)] = tokenizer.mask_token_id # replacing the token at index idx with the special mask token
+    for idx in idxs:
+        inputs.input_ids[torch.tensor(0), torch.tensor(
+            idx)] = tokenizer.mask_token_id
+    encoder_output = model(**inputs)
+    mask_token_index = torch.where(
+        inputs["input_ids"] == tokenizer.mask_token_id)[1]
 
-encoder_output = model(**inputs)
-mask_token_index = torch.where(inputs["input_ids"] == tokenizer.mask_token_id)[1]
+    mask_token_logits = encoder_output.logits[0, mask_token_index, :]
 
-mask_token_logits = encoder_output.logits[0, mask_token_index, :]
+    prob = nnf.softmax(mask_token_logits, dim=1)
+    top_ps, _ = prob.topk(1, dim=1)
 
-predicted = tokenizer.decode(torch.topk(mask_token_logits, 1, dim=1).indices[0].tolist())
+    preds = []
+    preds_embeddings = []
+    tops = torch.topk(mask_token_logits, 1, dim=1)
+    for i in range(len(idxs)):
+        pred = tokenizer.decode(tops.indices[i].tolist())
+        emb = embeddings(pred, tokenizer, model, embeddings_cache)
+        preds.append(pred)
+        preds_embeddings.append(emb)
 
-print(predicted) # main (priedicted text of token)
+    out = []
+    for i in range(len(idxs)):
+        similarity = cosine_similarity(
+            originals_embeddings[i].detach().numpy(), preds_embeddings[i].detach().numpy())
+        out.append({
+            'idx': idxs[i],
+            'original': originals[i],
+            'predicted': preds[i],
+            'cosine_similarity': similarity,
+            'probability': top_ps[i].item(),
+        })
+    return out
+
+inputs = tokenizer(text, return_tensors='pt',
+                   truncation=True, max_length=1024)
+out = []
+embeddings_cache = {}
+
+out = out + for_idx([7, 8, 9, 10, 11, 12, 13], deepcopy(inputs), model,
+                    tokenizer, embeddings_cache)
+
+for x in out:
+    print(x)
