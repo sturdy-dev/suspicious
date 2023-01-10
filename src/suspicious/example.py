@@ -4,7 +4,7 @@ import torch
 import torch.nn as nn
 
 text = """
-def main():
+def <mask>():
     parser = argparse.ArgumentParser(
         prog='sus', description='Detects possibly suspicious stuff in your source files')
     parser.add_argument('file', nargs='?', help='The file to analyze')
@@ -50,11 +50,11 @@ model.lm_head = lm_head
 inputs = tokenizer(text, return_tensors='pt',
                        truncation=True, max_length=1024)
     
-idx = 3 # the index of the token to be masked
-original = tokenizer.decode(inputs['input_ids'][0][idx])
-print(original) # main (actual text of token)
+# idx = 3 # the index of the token to be masked
+# original = tokenizer.decode(inputs['input_ids'][0][idx])
+# print(original) # main (actual text of token)
 
-inputs.input_ids[torch.tensor(0), torch.tensor(idx)] = tokenizer.mask_token_id # replacing the token at index idx with the special mask token
+# inputs.input_ids[torch.tensor(0), torch.tensor(idx)] = tokenizer.mask_token_id # replacing the token at index idx with the special mask token
 
 encoder_output = model(**inputs)
 mask_token_index = torch.where(inputs["input_ids"] == tokenizer.mask_token_id)[1]
