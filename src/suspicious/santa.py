@@ -38,13 +38,21 @@ def infill(prefix_suffix_tuples, max_new_tokens, temperature):
     # `return_token_type_ids=False` is essential, or we get nonsense output.
     inputs = tokenizer_fim(prompts, return_tensors="pt", padding=True, return_token_type_ids=False).to(device)
     with torch.no_grad():
-        outputs = model.generate(
+        model_output = model.generate(
             **inputs,
             do_sample=True,
             temperature=temperature,
             max_new_tokens=max_new_tokens,
-            pad_token_id=tokenizer.pad_token_id
+            pad_token_id=tokenizer.pad_token_id,
+            return_dict_in_generate=True,
+            output_scores=True,
         )
+    probs = torch.stack(model_output.scores, dim=1).softmax(-1)
+    sequences = model_output.sequences[:, inputs.input_ids.shape[-1]:] 
+    gen_probs = torch.gather(probs, 2, sequences[:, :, None]).squeeze(-1)
+    print('Avg confidence for all generated tokens:', torch.mean(gen_probs).detach().numpy())
+
+    outputs = model_output.sequences
     # WARNING: cannot use skip_special_tokens, because it blows away the FIM special tokens.
     return [        
         extract_fim_part(tokenizer_fim.decode(tensor, skip_special_tokens=False)) for tensor in outputs
