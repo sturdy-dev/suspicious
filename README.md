@@ -1,3 +1,4 @@
+#hello test
 # Suspicious
 
 Detects possibly suspicious stuff in your source files. 100% local, no data leaves your computer.
